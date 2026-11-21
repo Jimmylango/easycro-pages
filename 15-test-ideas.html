@@ -105,7 +105,7 @@ body{background:#f5f4ef}
 <div class="ecdl" data-guide="15 Shopify A/B test ideas" data-script="https://script.google.com/macros/s/AKfycbwZD__y8hAqZ7JYgXJdXV629WGFM9-fD8e_dWveJrAk12ovayn6EU88ZwxXM2ofB-Y_/exec" data-drive="https://drive.google.com/file/d/1jqWFlrbtI6zWbYo_Hiki1q9FmXuzqJqU/view?usp=sharing">
  <div class="wrap">
   <nav><a class="wm" href="https://easycro.com">easy<span>cro</span></a>
-   <a class="pillbtn dark" data-cal href="https://cal.com/easycro/demo" target="_blank" rel="noopener">📅<span> Book a 30-min call</span></a></nav>
+   <a class="pillbtn dark" data-cal href="https://cal.com/easycro/discovery" target="_blank" rel="noopener">📅<span> Book a 30-min call</span></a></nav>
   <section class="hero">
    <div>
     <span class="chip"><b></b>Free playbook · PDF</span>
@@ -129,7 +129,7 @@ body{background:#f5f4ef}
       <h3>It's yours.</h3>
       <p>Open the playbook below. Start with the three ideas your data points to, and judge them on orders and revenue.</p>
       <div class="acts"><a class="pillbtn cob" href="https://drive.google.com/file/d/1jqWFlrbtI6zWbYo_Hiki1q9FmXuzqJqU/view?usp=sharing" target="_blank" rel="noopener">Open the PDF →</a>
-       <a class="pillbtn ghost" data-cal href="https://cal.com/easycro/demo" target="_blank" rel="noopener">Book a 30-min intro call</a></div>
+       <a class="pillbtn ghost" data-cal href="https://cal.com/easycro/discovery" target="_blank" rel="noopener">Book a 30-min intro call</a></div>
      </div>
     </div>
    </div>
@@ -231,14 +231,14 @@ body{background:#f5f4ef}
   }
   function hideFix(){ hint.style.display='none'; hint.innerHTML=''; }
 
-  /* booking pop-up: same Cal.com event (easycro/demo) and palette as easycro.com */
+  /* booking pop-up: same Cal.com event (easycro/discovery) and palette as easycro.com */
   var dlg=root.querySelector('.cal-modal'), mounted=false;
   function loadCal(){
     if(mounted) return; mounted=true;
     (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
     var ns="ecdlpop", box=dlg.querySelector('.cm-cal'), ready=function(){ box.classList.add('ready'); };
     Cal("init",ns,{origin:"https://app.cal.com"});
-    Cal.ns[ns]("inline",{elementOrSelector:"#ecdl-cal",config:{layout:"month_view",theme:"light"},calLink:"easycro/demo"});
+    Cal.ns[ns]("inline",{elementOrSelector:"#ecdl-cal",config:{layout:"month_view",theme:"light"},calLink:"easycro/discovery"});
     Cal.ns[ns]("ui",{"theme":"light","hideEventTypeDetails":true,"layout":"month_view","cssVarsPerTheme":{"light":{"cal-brand":"#2b54ff","cal-brand-emphasis":"#1c3fd6","cal-brand-text":"#ffffff","cal-bg":"#ffffff","cal-bg-muted":"#f5f4ef","cal-bg-subtle":"#f5f4ef","cal-bg-emphasis":"#e3e9ff","cal-border":"#e3e1d9","cal-border-subtle":"#efede7","cal-border-booker":"#ffffff","cal-text":"#131313","cal-text-emphasis":"#1c3fd6","cal-text-subtle":"#8d8b84","cal-text-muted":"#bab8b0"}}});
     Cal.ns[ns]("on",{action:"linkReady",callback:ready}); setTimeout(ready,12000);
     Cal.ns[ns]("on",{action:"bookingSuccessful",callback:function(){ var t=document.createElement('div'); t.className='ecdl-ok'; t.textContent='Booked! Check your inbox for the video link.'; document.body.appendChild(t); setTimeout(function(){ t.remove(); },5000); }});

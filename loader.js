@@ -5,6 +5,17 @@
    It fetches the latest page from GitHub Pages and runs it. Update the page = push to GitHub; no change in Dorik. */
 (function () {
   var BASE = 'https://jimmylango.github.io/easycro-pages/';
+  // Dorik wraps custom code in containers with padding (about 20px above and below).
+  // Pull the page up and out to the edges of its Dorik section so the background reaches the top.
+  function bleed(root) {
+    var sec = root.closest('.dorik-section');
+    if (!sec) return;
+    root.style.marginTop = root.style.marginBottom = '';
+    var top = root.getBoundingClientRect().top - sec.getBoundingClientRect().top;
+    var bottom = sec.getBoundingClientRect().bottom - root.getBoundingClientRect().bottom;
+    if (top > 0 && top < 80) root.style.marginTop = -top + 'px';
+    if (bottom > 0 && bottom < 80) root.style.marginBottom = -bottom + 'px';
+  }
   var roots = document.querySelectorAll('#ecdl-root, [data-ecdl-page]');
   roots.forEach(function (root) {
     var page = root.getAttribute('data-page') || root.getAttribute('data-ecdl-page');
@@ -17,6 +28,7 @@
       .then(function (html) {
         root.innerHTML = html;
         root.style.minHeight = '';
+        bleed(root);
         // scripts inserted with innerHTML don't run: re-create them in place, strictly in order
         // (external libraries like GSAP must finish loading before the inline code that uses them)
         var list = Array.prototype.slice.call(root.querySelectorAll('script'));

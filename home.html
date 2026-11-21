@@ -1049,7 +1049,7 @@ html,body{overflow-x:clip!important;overflow-y:visible!important}
 
 
 <script>
-/* Cal.com booking, embedded in the page (same event as the live site: easycro/demo), styled to the Easy CRO palette */
+/* Cal.com booking, embedded in the page (same event as the live site: easycro/discovery), styled to the Easy CRO palette */
 (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 (function(){
   var UI={"theme":"light","hideEventTypeDetails":true,"layout":"month_view",
@@ -1057,7 +1057,7 @@ html,body{overflow-x:clip!important;overflow-y:visible!important}
   function thanks(){ var t=document.createElement('div'); t.className='cal-ok'; t.textContent='Booked! Check your inbox for the video link.'; document.body.appendChild(t); setTimeout(function(){ t.remove(); },5000); }
   function mount(ns,sel){
     Cal("init",ns,{origin:"https://app.cal.com"});
-    Cal.ns[ns]("inline",{elementOrSelector:sel,config:{layout:"month_view",theme:"light"},calLink:"easycro/demo"});
+    Cal.ns[ns]("inline",{elementOrSelector:sel,config:{layout:"month_view",theme:"light"},calLink:"easycro/discovery"});
     Cal.ns[ns]("ui",UI);
     Cal.ns[ns]("on",{action:"bookingSuccessful",callback:thanks});
     var el=document.querySelector(sel), box=el&&el.closest(".cal-box"); if(box){ var ok=function(){ box.classList.add("cal-ready"); }; Cal.ns[ns]("on",{action:"linkReady",callback:ok}); setTimeout(ok,12000); }
@@ -1293,7 +1293,7 @@ html,body{overflow-x:clip!important;overflow-y:visible!important}
 
   /* date pickers: pick a day, the booking page opens on that day to choose a time */
   (function(){
-    var BASE='https://cal.com/easycro/demo';
+    var BASE='https://cal.com/easycro/discovery';
     var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
     function pad(n){ return (n<10?'0':'')+n; }
     root.querySelectorAll('[data-pick]').forEach(function(box){
