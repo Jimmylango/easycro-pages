@@ -1,0 +1,257 @@
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap"><style>
+.ecdl{--paper:#f5f4ef;--ink:#131313;--ink2:#3a3a38;--mute:#6e6d68;--line:#e3e1d9;--cobalt:#2b54ff;--cobalt-d:#1c3fd6;--butter:#ffe45c;--bubble:#ffb8e2;--mint:#9df2c8;--sky:#bcd5ff;--win:#0b8f50;
+  --display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;--body:"DM Sans",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace;
+  font-family:var(--body);color:var(--ink);background:var(--paper) radial-gradient(circle at 1px 1px,#dcd9ce 1px,transparent 1.5px) 0 0/18px 18px;min-height:100vh;-webkit-font-smoothing:antialiased}
+.ecdl{width:100vw;margin:-20px calc(50% - 50vw);position:relative}
+body{background:#f5f4ef}
+.ecdl h1,.ecdl h3{color:var(--ink)}
+.ecdl *{box-sizing:border-box;margin:0;padding:0}
+.ecdl a{color:inherit;text-decoration:none}
+.ecdl .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.ecdl nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.ecdl .wm{font:800 26px/1 var(--display);letter-spacing:-.06em}.ecdl .wm span{color:var(--cobalt)}
+.ecdl .pillbtn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;font:600 15px/1 var(--body);padding:13px 20px;transition:transform .15s,background .15s}
+.ecdl .pillbtn:hover{transform:translateY(-1px)}
+.ecdl .dark{background:var(--ink);color:#fff}
+.ecdl .ghost{background:#fff;border:1px solid var(--line)}
+.ecdl .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:36px 0 56px}
+.ecdl .chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font:600 13px/1 var(--body);color:var(--ink2)}
+.ecdl .chip b{width:7px;height:7px;border-radius:50%;background:var(--cobalt);display:block}
+.ecdl h1{font:800 clamp(40px,5.4vw,66px)/.95 var(--display);letter-spacing:-.05em;margin:18px 0 18px}
+.ecdl .hlw{background:linear-gradient(transparent 55%,var(--butter) 55% 92%,transparent 92%);padding:0 .05em}
+.ecdl .lead{font:500 18px/1.55 var(--body);color:var(--ink2);max-width:540px}
+.ecdl ul.ins{list-style:none;display:grid;gap:10px;margin:22px 0 26px}
+.ecdl ul.ins li{display:flex;gap:10px;align-items:flex-start;font:600 15.5px/1.4 var(--body)}
+.ecdl ul.ins li i{flex:none;width:22px;height:22px;border-radius:50%;background:var(--cobalt);color:#fff;font:700 12px/22px var(--body);text-align:center;font-style:normal}
+.ecdl .card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 1px 0 rgba(19,19,19,.04),0 18px 40px -18px rgba(19,19,19,.25);max-width:540px}
+.ecdl form label{display:block;font:500 12px/1 var(--mono);color:var(--mute);text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px}
+.ecdl .row{display:flex;gap:8px}
+.ecdl input.nm{flex:0 0 38%;min-width:0;font:500 16px/1 var(--body);padding:15px 18px;border:1.5px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);outline:none}
+.ecdl input.nm:focus{border-color:var(--cobalt);background:#fff}
+.ecdl button.go{width:100%;margin-top:10px;font-size:16px;padding:16px 22px}
+.ecdl input[type=email]{flex:1;min-width:0;font:500 16px/1 var(--body);padding:15px 18px;border:1.5px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);outline:none}
+.ecdl input[type=email]:focus{border-color:var(--cobalt);background:#fff}
+.ecdl button{font:700 15px/1 var(--body);border:0;cursor:pointer;background:var(--cobalt);color:#fff;border-radius:999px;padding:15px 22px;white-space:nowrap;transition:background .15s}
+.ecdl button:hover{background:var(--cobalt-d)}
+.ecdl button[disabled]{opacity:.6;cursor:wait}
+.ecdl form label.opt{display:flex;gap:8px;align-items:flex-start;margin:14px 0 0;font:500 13px/1.45 var(--body);color:var(--ink2);cursor:pointer;text-transform:none;letter-spacing:0}
+.ecdl .opt input{margin-top:2px;accent-color:var(--cobalt);width:16px;height:16px;flex:none}
+.ecdl .fine{margin-top:12px;font:400 12px/1.5 var(--mono);color:var(--mute)}
+.ecdl .fine a{text-decoration:underline}
+.ecdl .err{display:none;margin-top:10px;font:600 13px/1.4 var(--body);color:#e8412a}
+.ecdl .emw{position:relative;flex:1;min-width:0;display:flex}
+.ecdl .emw input{width:100%}
+.ecdl .ac{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:20;list-style:none;background:#fff;border:1px solid var(--line);border-radius:16px;padding:6px;box-shadow:0 18px 40px -18px rgba(19,19,19,.35);display:none}
+.ecdl .ac.on{display:block}
+.ecdl .ac li{padding:10px 12px;border-radius:10px;font:500 15px/1.2 var(--body);color:var(--ink2);cursor:pointer}
+.ecdl .ac li b{color:var(--ink);font-weight:700}
+.ecdl .ac li.act,.ecdl .ac li:hover{background:#e6eaff;color:var(--ink)}
+.ecdl .hint{display:none;margin-top:10px;font:600 13.5px/1.4 var(--body);color:var(--ink2)}
+.ecdl .hint button{background:var(--butter);color:var(--ink);font:700 13.5px/1 var(--body);padding:6px 10px;border-radius:999px;margin-left:4px}
+.ecdl .hint button:hover{background:#ffd92e}
+.ecdl .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.ecdl .done{display:none}
+.ecdl .done h3{font:800 30px/1 var(--display);letter-spacing:-.04em}
+.ecdl .done p{margin:10px 0 18px;font:500 15.5px/1.5 var(--body);color:var(--ink2)}
+.ecdl .done .acts{display:flex;gap:10px;flex-wrap:wrap}
+.ecdl .done .cob{background:var(--cobalt);color:#fff}
+.ecdl .ok{display:inline-flex;align-items:center;gap:8px;background:#d7f7e6;color:var(--win);border-radius:999px;padding:6px 12px;font:600 13px/1 var(--body);margin-bottom:12px}
+.ecdl .visual{position:relative;aspect-ratio:1/1.02;width:100%}
+.ecdl .visual img{position:absolute;width:58%;border-radius:14px;border:1px solid var(--line);box-shadow:0 30px 60px -28px rgba(19,19,19,.45);background:#fff}
+.ecdl .visual .a{right:4%;top:0;rotate:2.5deg;z-index:2}
+.ecdl .visual .b{left:4%;top:12%;rotate:-4deg;z-index:1}
+.ecdl .visual .tag{position:absolute;z-index:3;left:8%;bottom:3%;background:var(--butter);border-radius:16px;padding:12px 16px;font:800 18px/1.05 var(--display);letter-spacing:-.02em;rotate:-3deg;box-shadow:0 10px 22px -16px rgba(19,19,19,.5)}
+.ecdl .visual .tag small{display:block;font:600 12px/1.2 var(--body);letter-spacing:0;margin-top:3px}
+.ecdl .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:6px 0 64px}
+.ecdl .st{border-radius:22px;padding:22px 22px 24px}
+.ecdl .st b{display:block;font:800 44px/.95 var(--display);letter-spacing:-.045em}
+.ecdl .st span{display:block;margin-top:8px;font:600 14px/1.35 var(--body)}
+.ecdl .st.cob{background:var(--cobalt);color:#fff;rotate:-1.2deg}.ecdl .st.mint{background:var(--mint);rotate:.8deg}.ecdl .st.butter{background:var(--butter);rotate:-.6deg}
+.ecdl footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:22px 0 30px;border-top:1px solid var(--line);font:500 13px/1 var(--mono);color:var(--mute)}
+.ecdl .cal-modal{border:0;padding:0;background:transparent;max-width:min(1040px,calc(100vw - 24px));width:100%;max-height:calc(100dvh - 24px);overflow:visible;margin:auto}
+.ecdl .cal-modal::backdrop{background:rgba(19,19,19,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.ecdl .cm-in{position:relative;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);background:#fff;border-radius:32px;overflow:hidden;box-shadow:0 40px 100px -30px rgba(0,0,0,.6);max-height:calc(100dvh - 24px)}
+.ecdl .cm-side{background:var(--cobalt);color:#fff;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:18px}
+.ecdl .cm-side .wm{color:var(--ink);background:#fff;align-self:flex-start;padding:6px 12px;border-radius:12px;font-size:22px}
+.ecdl .cm-side h3{font:800 clamp(30px,3.4vw,44px)/.95 var(--display);letter-spacing:-.04em;color:#fff}
+.ecdl .cm-side ul{list-style:none;display:grid;gap:10px;font:500 16px/1.4 var(--body)}
+.ecdl .cm-side li{display:flex;gap:10px}
+.ecdl .cm-side li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:7px;background:var(--butter);color:var(--ink);display:grid;place-items:center;font:700 12px/1 var(--body)}
+.ecdl .cm-cal{overflow:auto;padding-top:56px;position:relative}
+.ecdl .cal-embed{width:100%;min-height:560px;overflow:auto;opacity:0;transition:opacity .5s}
+.ecdl .cm-cal.ready .cal-embed{opacity:1}
+.ecdl .cal-wait{position:absolute;inset:56px 0 0;display:grid;place-content:center;justify-items:center;gap:14px;text-align:center;color:var(--ink2);font:500 15px/1.4 var(--body);transition:opacity .4s;pointer-events:none}
+.ecdl .cm-cal.ready .cal-wait{opacity:0}
+.ecdl .cal-wait i{width:38px;height:38px;border-radius:50%;border:3px solid #e3e9ff;border-top-color:#2b54ff;animation:ecdlspin .8s linear infinite}
+@keyframes ecdlspin{to{transform:rotate(360deg)}}
+.ecdl .cm-x{position:absolute;right:14px;top:14px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:var(--paper);color:var(--ink);font:600 16px/1 var(--body);cursor:pointer;padding:0}
+.ecdl .cm-x:hover{background:var(--butter)}
+.ecdl-ok{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:99999;background:#131313;color:#fff;font:600 15px/1 "DM Sans",sans-serif;padding:16px 20px;border-radius:999px}
+@media (max-width:760px){.ecdl .cm-in{grid-template-columns:minmax(0,1fr);overflow:auto}.ecdl .cm-side ul{display:none}}
+@media (max-width:900px){
+  .ecdl .hero{grid-template-columns:1fr;gap:28px;padding-top:12px}
+  .ecdl .visual{order:-1;max-width:460px;margin:0 auto}
+  .ecdl .stats{grid-template-columns:1fr;gap:12px}
+}
+@media (max-width:520px){
+  .ecdl .row{flex-direction:column}
+  .ecdl button{width:100%}
+  .ecdl nav .dark span{display:none}
+  .ecdl .visual{max-width:290px}
+  .ecdl .visual .tag{font-size:15px;padding:9px 12px}
+  .ecdl .lead{font-size:16.5px}
+}
+</style>
+<div class="ecdl" data-guide="15 Shopify A/B test ideas" data-script="https://script.google.com/macros/s/AKfycbwZD__y8hAqZ7JYgXJdXV629WGFM9-fD8e_dWveJrAk12ovayn6EU88ZwxXM2ofB-Y_/exec" data-drive="https://drive.google.com/file/d/1jqWFlrbtI6zWbYo_Hiki1q9FmXuzqJqU/view?usp=sharing">
+ <div class="wrap">
+  <nav><a class="wm" href="https://easycro.com">easy<span>cro</span></a>
+   <a class="pillbtn dark" data-cal href="https://cal.com/easycro/demo" target="_blank" rel="noopener">📅<span> Book a 30-min call</span></a></nav>
+  <section class="hero">
+   <div>
+    <span class="chip"><b></b>Free playbook · PDF</span>
+    <h1>15 Shopify A/B test <span class="hlw">ideas.</span></h1>
+    <p class="lead">Tested on real stores. Judged on orders and revenue, not clicks. Get the playbook and pick the three tests your store needs first.</p>
+    <ul class="ins"><li><i>✓</i>11 tests from real Shopify stores, with the result</li><li><i>✓</i>Control vs variant wireframes for every idea</li><li><i>✓</i>What to measure, and what to check before you test</li><li><i>✓</i>4 more ideas worth testing on your store</li></ul>
+    <div class="card">
+     <form novalidate>
+      <label for="ecdl-email">Where should I send it?</label>
+      <div class="row"><input class="nm" name="name" type="text" placeholder="Your name" autocomplete="name" maxlength="40" aria-label="Your name" required>
+       <div class="emw"><input id="ecdl-email" name="email" type="email" placeholder="you@yourstore.com" autocomplete="email" required aria-autocomplete="list" aria-controls="ecdl-ac"><ul class="ac" id="ecdl-ac" role="listbox"></ul></div></div>
+      <button class="go" type="submit" data-label="Send me the playbook →">Send me the playbook →</button>
+      <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="opt"><input type="checkbox" name="consent"> Also send me occasional CRO tips by email. Unsubscribe anytime.</label>
+      <p class="fine">Instant access, no spam. By continuing you agree to the <a href="https://easycro.com/#privacy-policy" target="_blank" rel="noopener">privacy policy</a>.</p>
+      <p class="hint" aria-live="polite"></p>
+      <p class="err" role="alert"></p>
+     </form>
+     <div class="done" aria-live="polite">
+      <span class="ok">✓ Done</span>
+      <h3>It's yours.</h3>
+      <p>Open the playbook below. Start with the three ideas your data points to, and judge them on orders and revenue.</p>
+      <div class="acts"><a class="pillbtn cob" href="https://drive.google.com/file/d/1jqWFlrbtI6zWbYo_Hiki1q9FmXuzqJqU/view?usp=sharing" target="_blank" rel="noopener">Open the PDF →</a>
+       <a class="pillbtn ghost" data-cal href="https://cal.com/easycro/demo" target="_blank" rel="noopener">Book a 30-min intro call</a></div>
+     </div>
+    </div>
+   </div>
+   <div class="visual"><img class="b" src="https://cdn.dorik.com/69ff9c75f19bfd0011f0be4f/images/15-ideas-page-GLOwY.jpg" alt="Inside page of 15 Shopify A/B test ideas"><img class="a" src="https://cdn.dorik.com/69ff9c75f19bfd0011f0be4f/images/15-ideas-cover-qNloy.jpg" alt="Cover of 15 Shopify A/B test ideas">
+    <div class="tag">Free PDF<small>15 Shopify A/B test ideas</small></div></div>
+  </section>
+  <section class="stats"><div class="st cob"><b>+55%</b><span>conversion rate · homepage navigation</span></div><div class="st mint"><b>+34%</b><span>conversion rate · collection by shape</span></div><div class="st butter"><b>+20.7%</b><span>conversion rate · price + pay-later block</span></div></section>
+  <footer><span>easycro · conversion rate optimisation for Shopify brands</span><a href="https://easycro.com">easycro.com</a></footer>
+ </div>
+ <dialog class="cal-modal" aria-labelledby="ecdl-cm-title">
+  <div class="cm-in">
+   <button class="cm-x" type="button" aria-label="Close">✕</button>
+   <div class="cm-side"><span class="wm">easy<span>cro</span></span>
+    <h3 id="ecdl-cm-title">30 minutes. Bring your numbers.</h3>
+    <ul><li>Your store. Your numbers. Live.</li><li>Not ready for CRO? I'll tell you.</li><li>No pitch deck. No pressure.</li></ul></div>
+   <div class="cm-cal"><div class="cal-wait"><i></i><span>Loading the calendar...</span></div><div id="ecdl-cal" class="cal-embed"></div></div>
+  </div>
+ </dialog>
+ <script>
+(function(){
+  var root=document.currentScript.closest('.ecdl')||document.querySelector('.ecdl');
+  var f=root.querySelector('form'), done=root.querySelector('.done'), err=root.querySelector('.err'), btn=f.querySelector('button');
+  var SCRIPT=root.getAttribute('data-script'), DRIVE=root.getAttribute('data-drive'), GUIDE=root.getAttribute('data-guide');
+  var q=new URLSearchParams(location.search), t0=Date.now();
+  var BL={ "disposable": ["mailinator.com","mailinator.net","guerrillamail.com","guerrillamail.net","guerrillamail.org","guerrillamail.biz","guerrillamail.de","guerrillamailblock.com","sharklasers.com","grr.la","pokemail.net","spam4.me","10minutemail.com","10minutemail.net","10minutemail.co.uk","20minutemail.com","temp-mail.org","temp-mail.io","tempmail.com","tempmail.net","tempmail.dev","tempmailo.com","tempail.com","tempinbox.com","tempr.email","mytemp.email","yopmail.com","yopmail.fr","yopmail.net","trashmail.com","trashmail.de","trashmail.net","getnada.com","nada.email","dispostable.com","maildrop.cc","mailnesia.com","mintemail.com","mohmal.com","throwawaymail.com","fakeinbox.com","fakemail.net","emailfake.com","emailondeck.com","spamgourmet.com","discard.email","mailcatch.com","moakt.com","burnermail.io","inboxkitten.com","mail.tm","mail.gw","minuteinbox.com","spambox.us","trbvm.com","dropmail.me","1secmail.com","1secmail.net","1secmail.org","mailpoof.com","harakirimail.com","getairmail.com","mailsac.com","byom.de","wegwerfmail.de","einrot.com","cuvox.de","emailtemporanea.com","correotemporal.org","tmpmail.org","tmpmail.net","fexbox.org","mailbox.in.ua"], "disposable_patterns": ["tempmail","temp-mail","tmpmail","10minute","throwaway","disposable","trashmail","guerrilla","mailinator","yopmail","fakeinbox","fakemail","burnermail","spambox"], "fake_domains": ["example.com","example.org","example.net","test.com","test.net","domain.com","yourstore.com","email.test","asdf.com","qwerty.com","none.com","noemail.com","nomail.com","fake.com"], "typos": {"gmial.com":"gmail.com","gmal.com":"gmail.com","gmai.com":"gmail.com","gamil.com":"gmail.com","gnail.com":"gmail.com","gmail.co":"gmail.com","gmail.con":"gmail.com","gmaill.com":"gmail.com","hotmial.com":"hotmail.com","hotmal.com":"hotmail.com","hotmail.co":"hotmail.com","hotmail.con":"hotmail.com","yahooo.com":"yahoo.com","yaho.com":"yahoo.com","yahoo.con":"yahoo.com","outlok.com":"outlook.com","outloo.com":"outlook.com","outlook.con":"outlook.com","iclod.com":"icloud.com","icloud.co":"icloud.com"}}, attempt=0;
+  f.addEventListener('submit',function(e){
+    e.preventDefault(); err.style.display='none';
+    var email=f.email.value.trim(), name=f.name.value.trim();
+    var bad=function(m){err.textContent=m;err.style.display='block';btn.disabled=false;btn.textContent=btn.getAttribute('data-label');};
+    if(!name){bad('Please add your name.');f.name.focus();return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){bad('Please enter a valid email address.');return;}
+    var dom=email.split('@')[1].toLowerCase();
+    if(BL.typos[dom]){btn.disabled=false;btn.textContent=btn.getAttribute('data-label');showFix(email);return;}
+    if(BL.disposable.indexOf(dom)>-1||BL.disposable_patterns.some(function(x){return dom.indexOf(x)>-1;})){bad('Please use your real email. Temporary inboxes cannot receive the guide.');return;}
+    if(BL.fake_domains.indexOf(dom)>-1){bad('Please use your real email address.');return;}
+    btn.disabled=true; btn.textContent='Checking...'; var my=++attempt;
+    hasMail(dom).then(function(ok){
+      if(my!==attempt) return;
+      if(!ok){bad('That email domain does not seem to exist. Please check for typos.');return;}
+      send(email);
+    });
+  });
+  function hasMail(dom){
+    var ask=function(t){return fetch('https://dns.google/resolve?name='+encodeURIComponent(dom)+'&type='+t).then(function(r){return r.json();});};
+    var timer=new Promise(function(res){setTimeout(function(){res(true);},4000);});
+    var check=ask('MX').then(function(j){ if(j.Status===3) return false; if(j.Answer&&j.Answer.length) return true;
+      return ask('A').then(function(a){return !!(a.Answer&&a.Answer.length);}); }).catch(function(){return true;});
+    return Promise.race([check,timer]);
+  }
+  function send(email){
+    btn.textContent='Sending...';
+    var data=new URLSearchParams({name:f.name.value.trim(),email:email,guide:GUIDE,consent:f.consent.checked?'yes':'no',company:f.company.value,t:String(Date.now()-t0),k:'ecdl-'+Math.floor(Date.now()/60000),
+      page:location.href.split('?')[0],ref:document.referrer||'',utm_source:q.get('utm_source')||'',utm_medium:q.get('utm_medium')||'',utm_campaign:q.get('utm_campaign')||''});
+    var finish=function(){ var n=f.name.value.trim().split(' ')[0]; if(n){ var h=done.querySelector('h3'); h.textContent=h.textContent.replace(/\.$/,', '+n.charAt(0).toUpperCase()+n.slice(1)+'.'); } f.style.display='none';done.style.display='block';};
+    if(SCRIPT.indexOf('http')!==0){finish();return;}
+    fetch(SCRIPT,{method:'POST',mode:'no-cors',body:data}).then(finish).catch(function(){
+      btn.disabled=false;btn.textContent=btn.getAttribute('data-label');
+      err.textContent='Something went wrong. Please try again.';err.style.display='block';});
+  }
+
+  /* email autocomplete + typo fix */
+  var DOMAINS=['gmail.com','outlook.com','hotmail.com','icloud.com','yahoo.com','live.com','proton.me','me.com','gmx.com','aol.com','hotmail.co.uk','yahoo.co.uk','outlook.es','hotmail.es','gmx.de','web.de','ziggo.nl','kpnmail.nl','hotmail.nl','live.nl'];
+  var inp=f.email, ac=root.querySelector('.ac'), hint=root.querySelector('.hint'), act=-1, items=[];
+  function closeAc(){ ac.classList.remove('on'); ac.innerHTML=''; act=-1; items=[]; }
+  function pick(v){ inp.value=v; closeAc(); hideFix(); inp.focus(); inp.setSelectionRange(v.length,v.length); }
+  function renderAc(){
+    var v=inp.value, at=v.indexOf('@');
+    if(at<1){ closeAc(); return; }
+    var user=v.slice(0,at), typed=v.slice(at+1).toLowerCase();
+    items=DOMAINS.filter(function(d){ return d.indexOf(typed)===0 && d!==typed; }).slice(0,6);
+    if(!items.length){ closeAc(); return; }
+    ac.innerHTML=''; act=-1;
+    items.forEach(function(d,i){
+      var li=document.createElement('li'); li.setAttribute('role','option');
+      li.appendChild(document.createTextNode(user+'@'));
+      var b=document.createElement('b'); b.textContent=d; li.appendChild(b);
+      li.addEventListener('mousedown',function(e){ e.preventDefault(); pick(user+'@'+d); });
+      ac.appendChild(li);
+    });
+    ac.classList.add('on');
+  }
+  function mark(){ [].forEach.call(ac.children,function(li,i){ li.classList.toggle('act',i===act); }); }
+  inp.addEventListener('input',function(){ hideFix(); err.style.display='none'; renderAc(); });
+  inp.addEventListener('keydown',function(e){
+    if(!ac.classList.contains('on')) return;
+    var user=inp.value.split('@')[0];
+    if(e.key==='ArrowDown'){ e.preventDefault(); act=(act+1)%items.length; mark(); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); act=(act-1+items.length)%items.length; mark(); }
+    else if((e.key==='Enter'||e.key==='Tab') && act>-1){ e.preventDefault(); pick(user+'@'+items[act]); }
+    else if(e.key==='Escape'){ closeAc(); }
+  });
+  inp.addEventListener('blur',function(){ setTimeout(closeAc,120); var v=inp.value.trim(), d=v.split('@')[1]; if(d&&BL.typos[d.toLowerCase()]) showFix(v); });
+  function showFix(v){
+    var parts=v.split('@'), fixed=parts[0]+'@'+BL.typos[parts[1].toLowerCase()];
+    hint.innerHTML=''; hint.appendChild(document.createTextNode('Did you mean '));
+    var b=document.createElement('button'); b.type='button'; b.textContent=fixed;
+    b.addEventListener('click',function(){ pick(fixed); });
+    hint.appendChild(b); hint.appendChild(document.createTextNode('?')); hint.style.display='block';
+  }
+  function hideFix(){ hint.style.display='none'; hint.innerHTML=''; }
+
+  /* booking pop-up: same Cal.com event (easycro/demo) and palette as easycro.com */
+  var dlg=root.querySelector('.cal-modal'), mounted=false;
+  function loadCal(){
+    if(mounted) return; mounted=true;
+    (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    var ns="ecdlpop", box=dlg.querySelector('.cm-cal'), ready=function(){ box.classList.add('ready'); };
+    Cal("init",ns,{origin:"https://app.cal.com"});
+    Cal.ns[ns]("inline",{elementOrSelector:"#ecdl-cal",config:{layout:"month_view",theme:"light"},calLink:"easycro/demo"});
+    Cal.ns[ns]("ui",{"theme":"light","hideEventTypeDetails":true,"layout":"month_view","cssVarsPerTheme":{"light":{"cal-brand":"#2b54ff","cal-brand-emphasis":"#1c3fd6","cal-brand-text":"#ffffff","cal-bg":"#ffffff","cal-bg-muted":"#f5f4ef","cal-bg-subtle":"#f5f4ef","cal-bg-emphasis":"#e3e9ff","cal-border":"#e3e1d9","cal-border-subtle":"#efede7","cal-border-booker":"#ffffff","cal-text":"#131313","cal-text-emphasis":"#1c3fd6","cal-text-subtle":"#8d8b84","cal-text-muted":"#bab8b0"}}});
+    Cal.ns[ns]("on",{action:"linkReady",callback:ready}); setTimeout(ready,12000);
+    Cal.ns[ns]("on",{action:"bookingSuccessful",callback:function(){ var t=document.createElement('div'); t.className='ecdl-ok'; t.textContent='Booked! Check your inbox for the video link.'; document.body.appendChild(t); setTimeout(function(){ t.remove(); },5000); }});
+  }
+  function closeCal(){ if(dlg.open){ dlg.close(); document.documentElement.style.overflow=''; } }
+  if(dlg && typeof dlg.showModal==='function'){
+    root.querySelectorAll('[data-cal]').forEach(function(a){
+      a.addEventListener('click',function(e){ e.preventDefault(); loadCal(); dlg.showModal(); document.documentElement.style.overflow='hidden'; });
+    });
+    dlg.querySelector('.cm-x').addEventListener('click',closeCal);
+    dlg.addEventListener('click',function(e){ if(e.target===dlg) closeCal(); });
+    dlg.addEventListener('close',function(){ document.documentElement.style.overflow=''; });
+  }
+})();
+</script>
+</div>
