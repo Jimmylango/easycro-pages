@@ -16,14 +16,24 @@
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
       .then(function (html) {
         root.innerHTML = html;
-        // scripts inserted with innerHTML don't run: re-create them in place, in order
-        root.querySelectorAll('script').forEach(function (old) {
-          var s = document.createElement('script');
-          for (var i = 0; i < old.attributes.length; i++) s.setAttribute(old.attributes[i].name, old.attributes[i].value);
-          s.textContent = old.textContent;
-          old.parentNode.replaceChild(s, old);
-        });
         root.style.minHeight = '';
+        // scripts inserted with innerHTML don't run: re-create them in place, strictly in order
+        // (external libraries like GSAP must finish loading before the inline code that uses them)
+        var list = Array.prototype.slice.call(root.querySelectorAll('script'));
+        (function next(i) {
+          if (i >= list.length) { document.dispatchEvent(new Event('ecdl:ready')); return; }
+          var old = list[i], s = document.createElement('script');
+          for (var a = 0; a < old.attributes.length; a++) s.setAttribute(old.attributes[a].name, old.attributes[a].value);
+          if (old.src) {
+            s.async = false;
+            s.onload = s.onerror = function () { next(i + 1); };
+            old.parentNode.replaceChild(s, old);
+          } else {
+            s.textContent = old.textContent;
+            old.parentNode.replaceChild(s, old);
+            next(i + 1);
+          }
+        })(0);
       })
       .catch(function () {
         root.innerHTML = '<p style="font:16px/1.5 sans-serif;padding:40px;text-align:center">Something went wrong loading this page. Please refresh, or email jimmy@easycro.com.</p>';
