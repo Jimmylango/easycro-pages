@@ -21,11 +21,17 @@
     var page = root.getAttribute('data-page') || root.getAttribute('data-ecdl-page');
     if (!page || root.getAttribute('data-loaded')) return;
     root.setAttribute('data-loaded', '1');
+    if (page === 'picker') {
+      var m = document.createElement('meta'); m.name = 'robots'; m.content = 'noindex,nofollow,noarchive';
+      document.head.appendChild(m);
+    }
     root.style.minHeight = '100vh';
     root.style.background = '#f5f4ef';
     fetch(BASE + page + '.html?v=' + Date.now(), { cache: 'no-store' })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
       .then(function (html) {
+        // a full page (like the locked post picker) takes over the whole window
+        if (/^\s*<!doctype/i.test(html)) { document.open(); document.write(html); document.close(); return; }
         root.innerHTML = html;
         root.style.minHeight = '';
         bleed(root);
