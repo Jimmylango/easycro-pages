@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive"><title>Post picker (locked)</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f5f4ef radial-gradient(circle at 1px 1px,#dcd9ce 1px,transparent 1.5px) 0 0/18px 18px;font:500 15px/1.5 -apple-system,system-ui,sans-serif;color:#131313}
+form{background:#fff;border:1px solid #e3e1d9;border-radius:22px;padding:28px;width:min(360px,90vw);display:grid;gap:12px;box-shadow:0 18px 40px -18px rgba(19,19,19,.25)}
+form.wait{visibility:hidden}
+.wm{font-weight:800;font-size:24px;letter-spacing:-.05em}.wm span{color:#2b54ff}
+input[type=password]{font:500 16px/1 inherit;padding:14px 16px;border:1.5px solid #e3e1d9;border-radius:999px;background:#f5f4ef;outline:none}input:focus{border-color:#2b54ff;background:#fff}
+label{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#3a3a38;cursor:pointer}
+button{font:700 15px/1 inherit;border:0;border-radius:999px;padding:14px;background:#2b54ff;color:#fff;cursor:pointer}
+.err{color:#e8412a;font-size:13px;min-height:18px;margin:0}
+</style></head><body>
+<form id="f" class="wait"><div class="wm">easy<span>cro</span></div><div>Post picker is locked.</div>
+<input id="pw" type="password" placeholder="Password" autocomplete="current-password">
+<label><input id="rm" type="checkbox" checked> Keep me unlocked on this device for 30 days</label>
+<button>Unlock</button><p class="err" id="e"></p></form>
+<script>
+var D={s:"bACaj7Mvun1aRZXrQjhDlw==",i:"YE5pj1wzrfCARrak",c:"W8dr7p2haaY/UDRId6fZBYZFqdR7OmTGzaD1KOT8KZa0HjjCcP3zvDxpWCO49d6GKqcBWaWnuhWuMqTkY9I3c/pDE6a9x1W1Au6Qb5DPbqkg2pu1n0LrYilrPLBQlRox3MbDgkumXSSsAVNWq0ryLOnwW/zavlNpUhdQz7NE7Y561b73ouDsKzMpENFGqYyPePP9m/FSllwISlcP5T7Eghtf/zXcm02UKP1AxbW1mkFL3O1nek0guUfGxAm37+0rKVAqvRJ3ZRFlJua3qs+eWQXdJpDmdQZsKV6Otzlapdzt2EQxJLSO6zxlpYwmMvvmb3CAdTEUc+vgYuNw2SmYnBWML7sM0zJDP50P9AEAYwHyIurbuYPHnCxfJXrOxyw759khEjNXtw2w0YBRMKr7rkm16DNtD84wIM+pLyWOaiky0xCpclDfw7czJe83gcYCBDJoqkTTnLA/bFkT1/HGwTSdDuPh5ljDHhLFORYsEPfD8jCAQ8qs4DbUGqBVJvG2idUjN0Mxnz8xCYux5A==",n:310000};
+var DAYS=30, DB='ecro-picker', ST='keys';
+function u(b){return Uint8Array.from(atob(b),function(c){return c.charCodeAt(0);});}
+function idb(mode, fn){ return new Promise(function(res,rej){ var r=indexedDB.open(DB,1);
+  r.onupgradeneeded=function(){ r.result.createObjectStore(ST); };
+  r.onerror=function(){ rej(r.error); };
+  r.onsuccess=function(){ var tx=r.result.transaction(ST,mode), q=fn(tx.objectStore(ST)); tx.oncomplete=function(){ res(q&&q.result); }; tx.onerror=function(){ rej(tx.error); }; }; }); }
+function saved(){ return idb('readonly',function(s){ return s.get('k'); }).catch(function(){ return null; }); }
+function forget(){ return idb('readwrite',function(s){ s.delete('k'); }).catch(function(){}); }
+async function derive(pw){
+  var k=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt:u(D.s),iterations:D.n,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['decrypt']);
+}
+async function open(key){
+  var html=new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:u(D.i)},key,u(D.c)));
+  document.open(); document.write(html); document.close();
+}
+(async function(){
+  var f=document.getElementById('f');
+  try { var rec=await saved();
+    if(rec && rec.key && rec.salt===D.s && rec.exp>Date.now()){ await open(rec.key); return; }
+    if(rec) await forget();
+  } catch(e){ await forget(); }
+  f.classList.remove('wait'); document.getElementById('pw').focus();
+  f.addEventListener('submit',async function(ev){ ev.preventDefault();
+    var b=this.querySelector('button'); b.textContent='Unlocking...';
+    try { var key=await derive(document.getElementById('pw').value);
+      await crypto.subtle.decrypt({name:'AES-GCM',iv:u(D.i)},key,u(D.c));
+      if(document.getElementById('rm').checked) await idb('readwrite',function(s){ s.put({key:key,salt:D.s,exp:Date.now()+DAYS*864e5},'k'); }).catch(function(){});
+      await open(key);
+    } catch(e){ b.textContent='Unlock'; document.getElementById('e').textContent='Wrong password.'; }
+  });
+})();
+</script></body></html>
