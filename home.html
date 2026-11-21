@@ -104,6 +104,8 @@ html,body{overflow-x:clip!important;overflow-y:visible!important}
 
 /* hero */
 .hero{position:relative;padding-top:clamp(56px,8vw,96px);overflow:hidden;background-color:var(--paper);background-image:radial-gradient(circle at 1px 1px,#cbc8bd 1.3px,transparent 1.8px);background-size:26px 26px}
+/* dots run up behind the floating nav */
+.hero{margin-top:-120px;padding-top:calc(clamp(56px,8vw,96px) + 120px)}
 @media (hover:none),(max-width:760px){.hero-spot{display:none}.hero{background-image:radial-gradient(circle at 1px 1px,#e4e1d7 1.2px,transparent 1.7px)}}
 .hero-spot{position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(circle at 1px 1px,var(--cobalt) 2.6px,transparent 3.2px);background-size:26px 26px;
   -webkit-mask-image:radial-gradient(var(--mr,240px) circle at var(--mx,72%) var(--my,30%),#000 0%,rgba(0,0,0,.5) 45%,transparent 72%);mask-image:radial-gradient(var(--mr,240px) circle at var(--mx,72%) var(--my,30%),#000 0%,rgba(0,0,0,.5) 45%,transparent 72%)}
